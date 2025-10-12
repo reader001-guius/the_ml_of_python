@@ -76,9 +76,9 @@ if __name__=='__main__':
         'conv4_1':0.20,
         'conv5_1':0.20,
     }
-    style_weight=1e4
-    content_weight=1.0
-    tv_weight=1e-6
+    style_weight=5e4
+    content_weight=0.2
+    tv_weight=3e-6
 
     step=0
     def closure():
@@ -111,7 +111,7 @@ if __name__=='__main__':
                   )
         return loss
 #选择优化器
-    optimizer=torch.optim.LBFGS([gen_img_tensor],lr=1.0,max_iter=300)
+    optimizer=torch.optim.LBFGS([gen_img_tensor],lr=0.1,max_iter=500)
  #训练循环
     optimizer.step(closure)
  #输出最终图像
