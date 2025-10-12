@@ -70,11 +70,11 @@ if __name__=='__main__':
         style_grams[layer_name]=gram
 #定义损失函数
     style_layer_weights={
-        'conv1_1':0.40,
-        'conv2_1':0.30,
+        'conv1_1':0.20,
+        'conv2_1':0.20,
         'conv3_1':0.20,
-        'conv4_1':0.08,
-        'conv5_1':0.02,
+        'conv4_1':0.20,
+        'conv5_1':0.20,
     }
     style_weight=1e4
     content_weight=1.0
