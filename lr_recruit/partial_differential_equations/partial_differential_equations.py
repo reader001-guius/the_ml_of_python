@@ -4,12 +4,12 @@ from torch.utils.data import DataLoader,  TensorDataset
 import matplotlib.pyplot as plt
 
 points = torch.empty(3000, 1)
-points.uniform_(-1, 1)
+points.uniform_(-5, 5)
 dataset = TensorDataset(points)
 batch_size = 888
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 def formula(x):
-    return torch.pow((x), 2)-1
+    return torch.pow((x), 2)+1
 
 
 class Models(nn.Module):
@@ -34,7 +34,7 @@ if __name__=='__main__':
     device = torch.device("cpu")
     num_epochs=6666
     num_epochs_lbfgs=200
-    x_ini = torch.tensor([[1.0],[-1.0]]).to(device)
+    x_ini = torch.tensor([[0.0]]).to(device)
     model=Models(input_size=1,hidden_size1=100,hidden_size2=88,hidden_size3=66,hidden_size4=55,hidden_size5=44)
     criterion = nn.MSELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=0.0)

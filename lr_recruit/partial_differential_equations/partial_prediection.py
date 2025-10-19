@@ -24,7 +24,7 @@ class PINN(nn.Module):
 if __name__ == '__main__':
     model = PINN(3,166,166,155,88,66)
     model.to(device)
-    model_path='D:\computers\python\ml\identify flowers\pinn_train_weights.pth'
+    model_path= '/ml/identify flowers/pinn_train_weights.pth'
     model.load_state_dict(torch.load(model_path))
     model.eval()
     print(f"成功加载模型权重")

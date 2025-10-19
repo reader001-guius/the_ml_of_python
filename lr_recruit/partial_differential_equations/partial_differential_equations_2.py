@@ -16,11 +16,11 @@ X_pde.requires_grad_(True)
 
 #边界条件
 N_bc=2000
-x_bc_0=2*torch.zeros(N_bc, 1)
-x_bc_2=2*torch.full((N_bc, 1),2)
+x_bc_0=torch.zeros(N_bc, 1)
+x_bc_2=torch.full((N_bc, 1),2)
 x_bc=2*torch.rand(N_bc, 1)
-y_bc_0=2*torch.zeros(N_bc, 1)
-y_bc_2=2*torch.full((N_bc, 1),2)
+y_bc_0=torch.zeros(N_bc, 1)
+y_bc_2=torch.full((N_bc, 1),2)
 y_bc=2*torch.rand(N_bc, 1)
 t_bc=torch.rand(N_bc, 1)
 X_0yt=torch.cat([x_bc_0,y_bc,t_bc],dim=1).float().to(device)
@@ -139,10 +139,10 @@ if __name__ == '__main__':
             # 边界条件
             N_bc = 2000
 
-            x_bc_2 = 2 * torch.full((N_bc, 1), 2)
+            x_bc_2 = torch.full((N_bc, 1), 2)
             x_bc = 2 * torch.rand(N_bc, 1)
 
-            y_bc_2 = 2 * torch.full((N_bc, 1), 2)
+            y_bc_2 = torch.full((N_bc, 1), 2)
             y_bc = 2 * torch.rand(N_bc, 1)
             t_bc = torch.rand(N_bc, 1)
             X_0yt = torch.cat([x_bc_0, y_bc, t_bc], dim=1).float().to(device)
@@ -180,7 +180,7 @@ if __name__ == '__main__':
             Loss_TOTAL = W_PDE * Loss_PDE + W_IC * Loss_IC + W_BC * Loss_BC
             print(f'LBFGS Epoch:{i+1}/{num_lfbgs} | loss:{Loss_TOTAL.item():.6f} | Loss_PDE:{Loss_PDE.item():.6f} | Loss_IC:{Loss_IC.item():.6f} | Loss_BC:{Loss_BC.item():.6f}')
 
-        model_path='pinn_train_weights.pth'
+        model_path= 'pinn_train_weights.pth'
     try:
         torch.save(model.state_dict(), model_path)
         print('Model saved in path: {}'.format(model_path))
